@@ -56,6 +56,10 @@ export default env => {
         },
       ],
     },
+    devServer: {
+      open: true,
+      historyApiFallback: true,
+    },
     plugins,
   }
 }
