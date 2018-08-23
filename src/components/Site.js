@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import styled, { injectGlobal } from 'react-emotion'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
 import { FaHome, FaInfo } from 'react-icons/fa'
-import { Motion, spring } from 'react-motion'
 import Home from './Home'
 import About from './About'
+import Animated from './Animated'
 
 const Container = styled.div`
   height: 100%;
@@ -13,14 +13,27 @@ const Container = styled.div`
   overflow: hidden;
 `
 
-const Header = styled.h1``
+const Header = styled.h1`
+  text-align: center;
+`
 
 const NavBar = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   * {
     &:hover {
+      font-weight: bold;
       color: pink;
     }
   }
+`
+
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 `
 
 injectGlobal`
@@ -53,21 +66,24 @@ export class Site extends Component {
       <Container>
         <Header>React App Template</Header>
         <NavBar>
-          <Link to="/">
-            <Motion defaultStyle={{ x: 1 }} style={{ x: spring(2) }}>
-              {style => <FaHome size={`${style.x}em`} />}
-            </Motion>
-            Link
-          </Link>
-          <Link to="/about">
+          <StyledLink to="/">
+            <FaHome size="2em" />
+            Home
+          </StyledLink>
+          <StyledLink to="/about">
             <FaInfo size="2em" />
             About
-          </Link>
+          </StyledLink>
+          <StyledLink to="/animated">
+            <FaInfo size="2em" />
+            Animated
+          </StyledLink>
         </NavBar>
         <hr />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/animated" component={Animated} />
         </Switch>
       </Container>
     )
