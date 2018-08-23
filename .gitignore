@@ -12,4 +12,3 @@ terraform.tfstate.d
 terraform.tfstate.backup
 *.tfvars
 .env
-package-lock.json
