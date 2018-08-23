@@ -11,7 +11,7 @@ export default env => {
     new HTMLWebpackPlugin({
       template: HTMLWebpackTemplate,
       inject: false,
-      title: 'React 360 Practice',
+      title: 'React App Template',
       mobile: true,
       chunks: ['main'],
       filename: 'index.html',

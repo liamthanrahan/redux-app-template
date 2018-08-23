@@ -1,7 +1,7 @@
 {
-  "name": "react-360-practice",
+  "name": "react-app-template",
   "version": "1.0.0",
-  "description": "Practice for using React360",
+  "description": "Template to create up to date React App",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --watch --mode=development",
