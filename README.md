@@ -6,4 +6,4 @@ I created this as I was seeing the packages we used in day to day work becoming 
 
 ## TODO
 
-[ ] Add tests for actions, reducer, selectors
+- [ ] Add tests for actions, reducer, selectors
