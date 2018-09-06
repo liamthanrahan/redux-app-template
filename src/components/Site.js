@@ -30,6 +30,7 @@ const NavBar = styled.nav`
 `
 
 const StyledLink = styled(Link)`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
