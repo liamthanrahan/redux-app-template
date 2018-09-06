@@ -10,14 +10,22 @@ const Container = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
-
   padding: 20px;
+`
+
+const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 `
 
 const Row = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  flex-direction: row;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
 `
 
 const PlusButton = styled(FaPlus)`
@@ -35,16 +43,28 @@ export class Home extends Component {
     count: Count,
     test: string,
   }
+  submit = () => {
+    const { setTest } = this.props
+    setTest(this.test.value)
+  }
   render() {
     const { count, test, incrementCount } = this.props
     return (
       <Container>
-        <Row>Home</Row>
-        <Row>
-          <PlusButton size="2em" onClick={incrementCount} />
-          <CountDisplay>Count: {count}</CountDisplay>
-        </Row>
-        <Row>Test: {test}</Row>
+        <Section>Home</Section>
+        <Section>
+          <Row>
+            <PlusButton size="2em" onClick={incrementCount} />
+            <CountDisplay>Count: {count}</CountDisplay>
+          </Row>
+        </Section>
+        <Section>
+          <Row>Test Value: {test}</Row>
+          <Row>
+            <input type="text" ref={el => (this.test = el)} />
+            <button onClick={this.submit}>Submit</button>
+          </Row>
+        </Section>
       </Container>
     )
   }

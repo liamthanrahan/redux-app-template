@@ -35,6 +35,9 @@ const StyledLink = styled(Link)`
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  &:not(:last-child) {
+    border-right: 1px solid gray;
+  }
 `
 
 injectGlobal`
@@ -45,7 +48,7 @@ injectGlobal`
 
   body {
     margin: 0;
-    font-family: 'Gotham Rounded';
+    font-family: Verdana, Geneva, sans-serif;
     font-weight: 400;
   }
 
