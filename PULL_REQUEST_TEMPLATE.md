@@ -1,4 +1,4 @@
-#[JIRA ISSUE](https://www.jira.com)
+# [JIRA ISSUE](https://www.jira.com)
 ## Changes
 Description of the changes/additions
 
