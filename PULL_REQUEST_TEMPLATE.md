@@ -1,8 +1,9 @@
 # [JIRA ISSUE](https://www.jira.com)
+
 ## Changes
 Description of the changes/additions
 
-### Before merging this PR:
+## Pre-merge checklist:
 
 - [ ] Replace default issue link text and reference the issue in the PR title
 - [ ] Write short description of fix underneath link
