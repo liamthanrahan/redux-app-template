@@ -1,0 +1,13 @@
+# Changelog
+
+## [1.0.1] - 2018-10-17
+### Added
+- README instructions for how to get started
+
+### Changed
+- PR template with improved formatting
+
+## [1.0.0] - 2018-10-17
+### Added
+- Changelog
+- PR template
