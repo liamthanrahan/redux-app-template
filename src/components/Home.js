@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
 import { FaPlus } from 'react-icons/fa'
+import PropTypes from 'prop-types'
 import { incrementCount, setTest } from '../actions'
-import { Count, MapStateToProps, MapDispatchToProps } from '../types'
 
 const Container = styled.div`
   height: 100%;
@@ -39,9 +39,9 @@ const CountDisplay = styled.div`
 `
 
 export class Home extends Component {
-  props: {
-    count: Count,
-    test: string,
+  static propTypes = {
+    count: PropTypes.number,
+    test: PropTypes.string,
   }
   submit = () => {
     const { setTest } = this.props
@@ -70,12 +70,12 @@ export class Home extends Component {
   }
 }
 
-const mapStateToProps: MapStateToProps = state => ({
+const mapStateToProps = state => ({
   count: state.count,
   test: state.test,
 })
 
-const mapDispatchToProps: MapDispatchToProps = {
+const mapDispatchToProps = {
   incrementCount,
   setTest,
 }
