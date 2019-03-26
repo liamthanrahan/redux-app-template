@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import styled, { injectGlobal } from 'react-emotion'
+import { injectGlobal } from 'emotion'
+import styled from '@emotion/styled'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
 import { FaHome, FaInfo } from 'react-icons/fa'
 import Home from './Home'
@@ -62,9 +63,6 @@ injectGlobal`
 `
 
 export class Site extends Component {
-  props: {
-    test: string,
-  }
   render() {
     return (
       <Container>
