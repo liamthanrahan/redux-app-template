@@ -1,14 +1,9 @@
-import type { State, Action } from './types'
-
-const initialState: State = {
+const initialState = {
   count: 0,
   test: 'test',
 }
 
-export default function reducer(
-  state: State = initialState,
-  action: Action
-): State {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case 'INCREMENT_COUNT':
       return {

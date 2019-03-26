@@ -1,6 +1,2 @@
-// @flow
-
-import type { Count, State } from './types'
-
-export const count: State => Count = state => state.count
-export const test: State => string = state => state.test
+export const count = state => state.count
+export const test = state => state.test

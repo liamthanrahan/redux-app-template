@@ -30,7 +30,7 @@ export default env => {
       modules: [path.join(__dirname, 'node_modules')],
     },
     entry: {
-      main: ['babel-polyfill', './src/index.js'],
+      main: ['./src/index.js'],
     },
     output: {
       path: path.join(__dirname, 'dist'),
@@ -43,15 +43,6 @@ export default env => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            options: {
-              presets: ['env', 'react'],
-              plugins: [
-                'emotion',
-                'react-hot-loader/babel',
-                'transform-class-properties',
-                'transform-object-rest-spread',
-              ],
-            },
           },
         },
       ],
