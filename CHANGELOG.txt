@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.2] - 2019-3-26
+### Changed
+- Removed types
+- Updated packages
+
 ## [1.0.1] - 2018-10-17
 ### Added
 - README instructions for how to get started
