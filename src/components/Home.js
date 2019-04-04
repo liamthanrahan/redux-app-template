@@ -4,6 +4,10 @@ import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
 import { FaPlus } from 'react-icons/fa'
 import PropTypes from 'prop-types'
+
+import Button from '@material-ui/core/Button'
+import Input from '@material-ui/core/Input'
+
 import { incrementCount, setTest } from '../actions'
 
 const Container = styled.div`
@@ -54,15 +58,23 @@ export class Home extends Component {
         <Section>Home</Section>
         <Section>
           <Row>
-            <PlusButton size="2em" onClick={incrementCount} />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={incrementCount}
+            >
+              <FaPlus />
+            </Button>
             <CountDisplay>Count: {count}</CountDisplay>
           </Row>
         </Section>
         <Section>
           <Row>Test Value: {test}</Row>
           <Row>
-            <input type="text" ref={el => (this.test = el)} />
-            <button onClick={this.submit}>Submit</button>
+            <Input inputRef={el => (this.test = el)} />
+            <Button variant="contained" color="primary" onClick={this.submit}>
+              Submit
+            </Button>
           </Row>
         </Section>
       </Container>

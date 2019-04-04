@@ -4,6 +4,8 @@ import { injectGlobal } from 'emotion'
 import styled from '@emotion/styled'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
 import { FaHome, FaInfo } from 'react-icons/fa'
+import { makeStyles } from '@material-ui/styles'
+import Button from '@material-ui/core/Button'
 import Home from './Home'
 import About from './About'
 import Animated from './Animated'
@@ -22,12 +24,6 @@ const NavBar = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  * {
-    &:hover {
-      font-weight: bold;
-      color: pink;
-    }
-  }
 `
 
 const StyledLink = styled(Link)`
@@ -58,27 +54,52 @@ injectGlobal`
   #root {
     height: 100%;
     position: relative;
-    background: #E0E6EA;
   }
 `
 
+const useStyles = makeStyles(theme => ({
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+  root: {
+    display: 'flex',
+  },
+}))
+
 export class Site extends Component {
   render() {
+    const classes = makeStyles(theme => ({
+      content: {
+        flexGrow: 1,
+        padding: theme.spacing(2),
+      },
+      root: {
+        display: 'flex',
+      },
+    }))
+
     return (
-      <Container>
+      <Container className={classes.root}>
         <Header>React App Template</Header>
         <NavBar>
           <StyledLink to="/">
-            <FaHome size="2em" />
-            Home
+            <Button color="primary">
+              <FaHome size="2em" />
+              Home
+            </Button>
           </StyledLink>
           <StyledLink to="/about">
-            <FaInfo size="2em" />
-            About
+            <Button color="primary">
+              <FaInfo size="2em" />
+              About
+            </Button>
           </StyledLink>
           <StyledLink to="/animated">
-            <FaInfo size="2em" />
-            Animated
+            <Button color="primary">
+              <FaInfo size="2em" />
+              Animated
+            </Button>
           </StyledLink>
         </NavBar>
         <hr />
