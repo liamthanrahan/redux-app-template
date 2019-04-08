@@ -23,6 +23,11 @@ const Section = styled.div`
   margin-bottom: 20px;
 `
 
+const Title = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+`
+
 const Row = styled.div`
   display: flex;
   align-items: center;
@@ -55,7 +60,9 @@ export class Home extends Component {
     const { count, test, incrementCount } = this.props
     return (
       <Container>
-        <Section>Home</Section>
+        <Section>
+          <Title>Home</Title>
+        </Section>
         <Section>
           <Row>
             <Button

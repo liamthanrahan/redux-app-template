@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "jest"
+    "test": "jest --coverage --passWithNoTests"
   },
   "author": "Liam Hanrahan",
   "license": "ISC",
