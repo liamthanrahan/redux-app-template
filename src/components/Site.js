@@ -135,8 +135,6 @@ export class Site extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  test: state.test,
-})
+const mapStateToProps = state => ({})
 
 export default withRouter(connect(mapStateToProps)(Site))
