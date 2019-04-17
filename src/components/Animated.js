@@ -3,9 +3,10 @@ import styled from '@emotion/styled'
 import { Motion, spring } from 'react-motion'
 
 const Container = styled.div`
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 `
 
 const AnimatedExample = styled.div`
