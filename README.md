@@ -1,6 +1,6 @@
-# React App Template
+# Redux App Template
 
-Template to create up to date React App for personal use.
+Template to create up to date Redux app for personal use.
 
 I created this as I was seeing the packages we used in day to day work becoming more and more outdated and decided to figure out the compatibility issues myself as a learning experience.
 
@@ -16,4 +16,8 @@ I created this as I was seeing the packages we used in day to day work becoming 
 
 ## Todo
 
-- [ ] Add tests for actions, reducer, selectors
+- [x] Add tests for actions, reducer, selectors
+- [x] Separate reducer and actions into folders and individual files
+- [x] Implement more tests for actions and selectors
+- [ ] Improve UI design
+- [ ] Infrastructure setup (Jenkins & Terraform)

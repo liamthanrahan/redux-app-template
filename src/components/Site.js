@@ -4,6 +4,9 @@ import { injectGlobal } from 'emotion'
 import styled from '@emotion/styled'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
 import { FaHome, FaInfo } from 'react-icons/fa'
+import { makeStyles } from '@material-ui/styles'
+import Button from '@material-ui/core/Button'
+import Divider from '@material-ui/core/Divider'
 import Home from './Home'
 import About from './About'
 import Animated from './Animated'
@@ -12,33 +15,44 @@ const Container = styled.div`
   height: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`
+
+const Top = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+  align-items: center;
+`
+
+const Bottom = styled.div`
+  flex: 1;
+  display: flex;
+  overflow-y: auto;
 `
 
 const Header = styled.h1`
-  text-align: center;
+  margin-right: 10px;
 `
 
 const NavBar = styled.nav`
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-around;
-  * {
-    &:hover {
-      font-weight: bold;
-      color: pink;
-    }
-  }
 `
 
 const StyledLink = styled(Link)`
-  flex: 1;
+  ${'' /* flex: 1; */}
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  &:not(:last-child) {
-    border-right: 1px solid gray;
-  }
+`
+
+const Label = styled.span`
+  margin-left: 5px;
 `
 
 injectGlobal`
@@ -58,42 +72,69 @@ injectGlobal`
   #root {
     height: 100%;
     position: relative;
-    background: #E0E6EA;
   }
 `
 
+const useStyles = makeStyles(theme => ({
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+  root: {
+    display: 'flex',
+  },
+}))
+
 export class Site extends Component {
   render() {
+    const classes = makeStyles(theme => ({
+      content: {
+        flexGrow: 1,
+        padding: theme.spacing(2),
+      },
+      root: {
+        display: 'flex',
+      },
+    }))
+
     return (
-      <Container>
-        <Header>React App Template</Header>
-        <NavBar>
-          <StyledLink to="/">
-            <FaHome size="2em" />
-            Home
-          </StyledLink>
-          <StyledLink to="/about">
-            <FaInfo size="2em" />
-            About
-          </StyledLink>
-          <StyledLink to="/animated">
-            <FaInfo size="2em" />
-            Animated
-          </StyledLink>
-        </NavBar>
-        <hr />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/animated" component={Animated} />
-        </Switch>
+      <Container className={classes.root}>
+        <Top>
+          <Header>React App Template</Header>
+          <NavBar>
+            <StyledLink to="/">
+              <Button color="primary" variant="contained">
+                <FaHome size="2em" />
+                <Label>Home</Label>
+              </Button>
+            </StyledLink>
+            <StyledLink to="/about">
+              <Button color="primary" variant="contained">
+                <FaInfo size="2em" />
+                <Label>About</Label>
+              </Button>
+            </StyledLink>
+            <StyledLink to="/animated">
+              <Button color="primary" variant="contained">
+                <FaInfo size="2em" />
+                <Label>Animated</Label>
+              </Button>
+            </StyledLink>
+          </NavBar>
+        </Top>
+        <Divider />
+        <Bottom>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/animated" component={Animated} />
+          </Switch>
+        </Bottom>
       </Container>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  test: state.test,
-})
+const mapStateToProps = state => ({})
 
 export default withRouter(connect(mapStateToProps)(Site))
