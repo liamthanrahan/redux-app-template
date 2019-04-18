@@ -8,7 +8,8 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/Input'
 
-import { incrementCount, setTest } from '../actions'
+import { incrementCount, setText } from '../actions'
+import { derivedCountAndTextSelector } from '../selectors'
 
 const Container = styled.div`
   height: 100%;
@@ -50,14 +51,14 @@ const CountDisplay = styled.div`
 export class Home extends Component {
   static propTypes = {
     count: PropTypes.number,
-    test: PropTypes.string,
+    text: PropTypes.string,
   }
   submit = () => {
-    const { setTest } = this.props
-    setTest(this.test.value)
+    const { setText } = this.props
+    setText(this.text.value)
   }
   render() {
-    const { count, test, incrementCount } = this.props
+    const { count, text, derived, incrementCount } = this.props
     return (
       <Container>
         <Section>
@@ -76,13 +77,17 @@ export class Home extends Component {
           </Row>
         </Section>
         <Section>
-          <Row>Test Value: {test}</Row>
+          <Row>Text Value: {text}</Row>
           <Row>
-            <Input inputRef={el => (this.test = el)} />
+            <Input inputRef={el => (this.text = el)} />
             <Button variant="contained" color="primary" onClick={this.submit}>
               Submit
             </Button>
           </Row>
+        </Section>
+        <Section>
+          <Row>Selector</Row>
+          <Row>{derived}</Row>
         </Section>
       </Container>
     )
@@ -91,12 +96,13 @@ export class Home extends Component {
 
 const mapStateToProps = state => ({
   count: state.count,
-  test: state.test,
+  text: state.text,
+  derived: derivedCountAndTextSelector(state),
 })
 
 const mapDispatchToProps = {
   incrementCount,
-  setTest,
+  setText,
 }
 
 export default withRouter(
