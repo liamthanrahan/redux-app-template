@@ -4,9 +4,7 @@ import styled from '@emotion/styled'
 import { withRouter } from 'react-router-dom'
 import { FaPlus } from 'react-icons/fa'
 import PropTypes from 'prop-types'
-
-import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/Input'
+import Button from 'react-bootstrap/Button'
 
 import { incrementCount, setText } from '../actions'
 import { derivedCountAndTextSelector } from '../selectors'
@@ -38,14 +36,14 @@ const Row = styled.div`
   }
 `
 
-const PlusButton = styled(FaPlus)`
-  cursor: pointer;
-`
-
 const CountDisplay = styled.div`
   display: inline-block;
   margin-left: 10px;
   user-select: none;
+`
+
+const Input = styled.input`
+  margin-right: 5px;
 `
 
 export class Home extends Component {
@@ -67,8 +65,8 @@ export class Home extends Component {
         <Section>
           <Row>
             <Button
-              variant="contained"
-              color="primary"
+              size="sm"
+              style={{ lineHeight: '1em' }}
               onClick={incrementCount}
             >
               <FaPlus />
@@ -79,10 +77,8 @@ export class Home extends Component {
         <Section>
           <Row>Text Value: {text}</Row>
           <Row>
-            <Input inputRef={el => (this.text = el)} />
-            <Button variant="contained" color="primary" onClick={this.submit}>
-              Submit
-            </Button>
+            <Input ref={el => (this.text = el)} />
+            <Button onClick={this.submit}>Submit</Button>
           </Row>
         </Section>
         <Section>
