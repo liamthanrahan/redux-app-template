@@ -13,11 +13,3 @@ I created this as I was seeing the packages we used in day to day work becoming 
 `npm run format` to manually format the code base according to the .prettierrc configuration
 
 `npm run test` to run tests
-
-## Todo
-
-- [x] Add tests for actions, reducer, selectors
-- [x] Separate reducer and actions into folders and individual files
-- [x] Implement more tests for actions and selectors
-- [ ] Improve UI design
-- [ ] Infrastructure setup (Jenkins & Terraform)
