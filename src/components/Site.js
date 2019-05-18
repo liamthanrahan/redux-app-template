@@ -4,9 +4,9 @@ import { injectGlobal } from 'emotion'
 import styled from '@emotion/styled'
 import { Route, Link, Switch, withRouter } from 'react-router-dom'
 import { FaHome, FaInfo } from 'react-icons/fa'
-import { makeStyles } from '@material-ui/styles'
-import Button from '@material-ui/core/Button'
-import Divider from '@material-ui/core/Divider'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+
 import Home from './Home'
 import About from './About'
 import Animated from './Animated'
@@ -19,13 +19,6 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const Top = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 10px;
-  align-items: center;
-`
-
 const Bottom = styled.div`
   flex: 1;
   display: flex;
@@ -36,23 +29,33 @@ const Header = styled.h1`
   margin-right: 10px;
 `
 
-const NavBar = styled.nav`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
+const UnstyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 const StyledLink = styled(Link)`
-  ${'' /* flex: 1; */}
+  color: inherit;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 const Label = styled.span`
   margin-left: 5px;
+`
+
+const FillNav = styled(Nav)`
+  width: 100%;
 `
 
 injectGlobal`
@@ -75,54 +78,38 @@ injectGlobal`
   }
 `
 
-const useStyles = makeStyles(theme => ({
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(2),
-  },
-  root: {
-    display: 'flex',
-  },
-}))
-
 export class Site extends Component {
   render() {
-    const classes = makeStyles(theme => ({
-      content: {
-        flexGrow: 1,
-        padding: theme.spacing(2),
-      },
-      root: {
-        display: 'flex',
-      },
-    }))
-
     return (
-      <Container className={classes.root}>
-        <Top>
-          <Header>React App Template</Header>
-          <NavBar>
-            <StyledLink to="/">
-              <Button color="primary" variant="contained">
-                <FaHome size="2em" />
-                <Label>Home</Label>
-              </Button>
-            </StyledLink>
-            <StyledLink to="/about">
-              <Button color="primary" variant="contained">
-                <FaInfo size="2em" />
-                <Label>About</Label>
-              </Button>
-            </StyledLink>
-            <StyledLink to="/animated">
-              <Button color="primary" variant="contained">
-                <FaInfo size="2em" />
-                <Label>Animated</Label>
-              </Button>
-            </StyledLink>
-          </NavBar>
-        </Top>
-        <Divider />
+      <Container>
+        <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
+          <UnstyledLink to="/">
+            <Navbar.Brand>React App Template</Navbar.Brand>
+          </UnstyledLink>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <FillNav fill>
+              <Nav.Item>
+                <UnstyledLink className="nav-link" to="/">
+                  <FaHome size="2em" />
+                  <Label>Home</Label>
+                </UnstyledLink>
+              </Nav.Item>
+              <Nav.Item>
+                <UnstyledLink className="nav-link" to="/about">
+                  <FaInfo size="2em" />
+                  <Label>About</Label>
+                </UnstyledLink>
+              </Nav.Item>
+              <Nav.Item>
+                <UnstyledLink className="nav-link" to="/animated">
+                  <FaInfo size="2em" />
+                  <Label>Animated</Label>
+                </UnstyledLink>
+              </Nav.Item>
+            </FillNav>
+          </Navbar.Collapse>
+        </Navbar>
         <Bottom>
           <Switch>
             <Route exact path="/" component={Home} />
